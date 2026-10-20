@@ -1,0 +1,139 @@
+<main class="page-shell">
+  <header class="page-hero">
+    <p class="eyebrow">Practice module 07</p>
+    <h1 class="page-title">Signal forms</h1>
+    <p class="page-description">
+      Connect form fields to a signal-backed model and explore validation as you enter an employee profile.
+    </p>
+  </header>
+
+  <section class="signal-form-layout" aria-label="Employee signal form">
+    <article class="panel signal-form-panel">
+      <div class="signal-form-heading">
+        <div class="form-icon" aria-hidden="true">✦</div>
+        <div>
+          <span class="section-label">Employee details</span>
+          <h2 class="section-heading">Build a profile</h2>
+          <p class="form-intro">Complete each field to see signal forms in action.</p>
+        </div>
+      </div>
+
+      <div class="signal-fields">
+        <div class="signal-field">
+          <label class="field-label" for="employee-name">Full name</label>
+          <input
+            id="employee-name"
+            class="atelier-input"
+            type="text"
+            placeholder="e.g. Alex Morgan"
+            autocomplete="name"
+            [formField]="employeeform.empname"
+            [class.signal-invalid]="employeeform.empname().touched() && employeeform.empname().invalid()"
+            [attr.aria-invalid]="employeeform.empname().touched() && employeeform.empname().invalid()"
+          />
+          @if (employeeform.empname().touched() && employeeform.empname().errors().length > 0) {
+            <ul class="field-errors">
+              @for (item of employeeform.empname().errors(); track $index) {
+                <li>{{ item.message }}</li>
+              }
+            </ul>
+          }
+          @if (employeeform.empname().touched() && employeeform.empname().valid()) {
+            <span class="field-success">Name looks good</span>
+          }
+        </div>
+
+        <div class="signal-field">
+          <label class="field-label" for="employee-city">City</label>
+          <input
+            id="employee-city"
+            class="atelier-input"
+            type="text"
+            placeholder="Where are they based?"
+            autocomplete="address-level2"
+            [formField]="employeeform.empcity"
+            [class.signal-invalid]="employeeform.empcity().touched() && employeeform.empcity().invalid()"
+            [attr.aria-invalid]="employeeform.empcity().touched() && employeeform.empcity().invalid()"
+          />
+          @if (employeeform.empcity().touched() && employeeform.empcity().errors().length > 0) {
+            <ul class="field-errors">
+              @for (item of employeeform.empcity().errors(); track $index) {
+                <li>{{ item.message }}</li>
+              }
+            </ul>
+          }
+          @if (employeeform.empcity().touched() && employeeform.empcity().valid()) {
+            <span class="field-success">City looks good</span>
+          }
+        </div>
+
+        <div class="signal-field">
+          <label class="field-label" for="employee-age">Age</label>
+          <input
+            id="employee-age"
+            class="atelier-input"
+            type="number"
+            placeholder="Enter age"
+            inputmode="numeric"
+            [formField]="employeeform.empage"
+            [class.signal-invalid]="employeeform.empage().touched() && employeeform.empage().invalid()"
+            [attr.aria-invalid]="employeeform.empage().touched() && employeeform.empage().invalid()"
+          />
+          @if (employeeform.empage().touched() && employeeform.empage().errors().length > 0) {
+            <ul class="field-errors">
+              @for (item of employeeform.empage().errors(); track $index) {
+                <li>{{ item.message }}</li>
+              }
+            </ul>
+          }
+          @if (employeeform.empage().touched() && employeeform.empage().valid()) {
+            <span class="field-success">Age is ready</span>
+          }
+        </div>
+
+        <button class="atelier-button signal-submit" type="button" (click)="submit()">
+          <span>Submit employee profile</span>
+          <span aria-hidden="true">→</span>
+        </button>
+        <p class="submit-note">Fields are validated using the signal form schema.</p>
+      </div>
+    </article>
+
+    <aside class="panel signal-form-aside" aria-label="About signal forms">
+      <span class="section-label">Reactive by design</span>
+      <h2 class="section-heading">Model and form, connected</h2>
+      <p class="aside-copy">
+        This form uses Angular Signals Forms to keep field values and validation state in sync with a signal model.
+      </p>
+
+      <div class="concept-list">
+        <div class="concept-item">
+          <span class="concept-mark" aria-hidden="true">01</span>
+          <div>
+            <strong>Signal model</strong>
+            <p>Employee data starts in a writable signal.</p>
+          </div>
+        </div>
+        <div class="concept-item">
+          <span class="concept-mark" aria-hidden="true">02</span>
+          <div>
+            <strong>Field connection</strong>
+            <p><code>[formField]</code> binds each input to its field.</p>
+          </div>
+        </div>
+        <div class="concept-item">
+          <span class="concept-mark" aria-hidden="true">03</span>
+          <div>
+            <strong>Schema validation</strong>
+            <p>Required and minimum-length rules give immediate feedback.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="signal-form-note">
+        <span class="note-mark" aria-hidden="true">i</span>
+        <p>Touch a field and leave it empty to see its required validation message.</p>
+      </div>
+    </aside>
+  </section>
+</main>

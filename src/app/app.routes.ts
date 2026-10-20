@@ -6,6 +6,7 @@ import { NotFound } from './components/not-found/not-found';
 import { ControlFlow } from './components/control-flow/control-flow';
 import { ReactiveFormEx } from './components/reactive-form-ex/reactive-form-ex';
 import { Signalbasics } from './components/signalbasics/signalbasics';
+import { SignalForms } from './components/signal-forms/signal-forms';
 
 export const routes: Routes = [
     {
@@ -28,6 +29,9 @@ export const routes: Routes = [
     },
     {
         path: "signalbasics", component: Signalbasics
+    },
+    {
+        path: "signalforms", component: SignalForms
     },
     {
         path:"**", component: NotFound
