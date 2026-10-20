@@ -5,6 +5,7 @@ import { DirectiveExp } from './components/directive-exp/directive-exp';
 import { NotFound } from './components/not-found/not-found';
 import { ControlFlow } from './components/control-flow/control-flow';
 import { ReactiveFormEx } from './components/reactive-form-ex/reactive-form-ex';
+import { Signalbasics } from './components/signalbasics/signalbasics';
 
 export const routes: Routes = [
     {
@@ -24,6 +25,9 @@ export const routes: Routes = [
     },
     {
         path: "reactiveform", component: ReactiveFormEx
+    },
+    {
+        path: "signalbasics", component: Signalbasics
     },
     {
         path:"**", component: NotFound

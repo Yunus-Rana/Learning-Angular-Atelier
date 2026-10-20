@@ -1,0 +1,263 @@
+.signal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.signal-card {
+  min-width: 0;
+}
+
+.card-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-topline .section-label {
+  margin-bottom: 0;
+}
+
+.signal-tag {
+  padding: 6px 9px;
+  border: 1px solid #e5ece7;
+  border-radius: 999px;
+  background: #f6f9f6;
+  color: #60766b;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.signal-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  margin: 24px 0 17px;
+  place-items: center;
+  border: 1px solid #dcebe2;
+  border-radius: 14px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.signal-card .section-heading {
+  margin-bottom: 10px;
+}
+
+.signal-value {
+  margin: 0;
+  color: var(--green-dark);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: clamp(25px, 4vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  overflow-wrap: anywhere;
+}
+
+.signal-caption {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.signal-button {
+  display: flex;
+  width: 100%;
+  margin-top: 22px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.status-card > .section-heading {
+  margin-top: 26px;
+}
+
+.status-display {
+  display: flex;
+  min-height: 91px;
+  padding: 17px;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid #e5ece7;
+  border-radius: 12px;
+  background: #f8faf8;
+}
+
+.status-orb {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #67aa7f;
+  box-shadow: 0 0 0 6px #e7f2ed;
+}
+
+.status-orb-inactive {
+  background: #a4aaa5;
+  box-shadow: 0 0 0 6px #edf0ed;
+}
+
+.status-display > div {
+  display: grid;
+  gap: 4px;
+}
+
+.status-display strong {
+  color: #334456;
+  font-size: 15px;
+}
+
+.status-display > div span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.status-card > .signal-caption {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.cities-card {
+  grid-column: 1 / -1;
+}
+
+.cities-heading {
+  display: flex;
+  margin-top: 22px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cities-heading .section-heading {
+  margin-bottom: 0;
+}
+
+.cities-heading .signal-caption {
+  margin-top: 5px;
+}
+
+.city-count {
+  flex: 0 0 auto;
+  color: #748277;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.signal-city-list {
+  display: grid;
+  margin: 19px 0 0;
+  padding: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  list-style: none;
+}
+
+.signal-city-list li {
+  display: flex;
+  min-width: 0;
+  min-height: 50px;
+  padding: 0 13px;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e7ece8;
+  border-radius: 11px;
+  background: #fbfcfb;
+  color: #42564b;
+  font-size: 12px;
+  font-weight: 600;
+  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.signal-city-list li:hover {
+  transform: translateY(-2px);
+  border-color: #cbded1;
+  background: #f6faf7;
+}
+
+.city-pin {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 4px var(--green-soft);
+}
+
+.city-arrow {
+  margin-left: auto;
+  color: #91a096;
+  font-size: 12px;
+}
+
+.signal-tip {
+  display: flex;
+  margin-top: 18px;
+  padding: 15px 17px;
+  align-items: flex-start;
+  gap: 11px;
+  border: 1px solid #e7eee8;
+  border-radius: 12px;
+  background: #f7faf7;
+}
+
+.tip-mark {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #e7f2ed;
+  color: var(--green-dark);
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.signal-tip p {
+  margin: 0;
+  color: #68786f;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.signal-tip strong {
+  color: #42564b;
+}
+
+.signal-tip code {
+  padding: 2px 5px;
+  border-radius: 5px;
+  background: #e9f1eb;
+  color: var(--green-dark);
+  font-family: Consolas, monospace;
+  font-size: 11px;
+}
+
+@media (max-width: 600px) {
+  .signal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cities-card {
+    grid-column: auto;
+  }
+
+  .signal-city-list {
+    grid-template-columns: 1fr;
+  }
+
+  .cities-heading {
+    align-items: flex-start;
+  }
+}

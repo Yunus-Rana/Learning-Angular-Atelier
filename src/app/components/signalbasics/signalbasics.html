@@ -1,0 +1,70 @@
+<main class="page-shell">
+  <header class="page-hero">
+    <p class="eyebrow">Practice module 06</p>
+    <h1 class="page-title">Signal basics</h1>
+    <p class="page-description">
+      Signals hold reactive values in your component. Read them in the template and update them to see the view respond.
+    </p>
+  </header>
+
+  <section class="signal-grid" aria-label="Angular signal examples">
+    <article class="panel signal-card mobile-card">
+      <div class="card-topline">
+        <span class="section-label">Writable signal</span>
+        <span class="signal-tag">string</span>
+      </div>
+      <div class="signal-icon" aria-hidden="true">#</div>
+      <h2 class="section-heading">Employee mobile</h2>
+      <p class="signal-value">{{ empMobileNo() }}</p>
+      <p class="signal-caption">The displayed number comes directly from the signal.</p>
+      <button class="atelier-button signal-button" type="button" (click)="changeno()">
+        Change number
+        <span aria-hidden="true">→</span>
+      </button>
+    </article>
+
+    <article class="panel signal-card status-card">
+      <div class="card-topline">
+        <span class="section-label">Writable signal</span>
+        <span class="signal-tag">boolean</span>
+      </div>
+      <h2 class="section-heading">Employee status</h2>
+      <div class="status-display">
+        <span class="status-orb" [class.status-orb-inactive]="!isActive()" aria-hidden="true"></span>
+        <div>
+          <strong>{{ isActive() ? 'Active' : 'Inactive' }}</strong>
+          <span>{{ isActive() ? 'Ready to go' : 'Currently unavailable' }}</span>
+        </div>
+      </div>
+      <p class="signal-caption">Call the signal to read its current value.</p>
+    </article>
+
+    <article class="panel signal-card cities-card">
+      <div class="card-topline">
+        <span class="section-label">Writable signal</span>
+        <span class="signal-tag">string array</span>
+      </div>
+      <div class="cities-heading">
+        <div>
+          <h2 class="section-heading">Office locations</h2>
+          <p class="signal-caption">A signal can hold a list of values, too.</p>
+        </div>
+        <span class="city-count">{{ cityList().length }} cities</span>
+      </div>
+      <ul class="signal-city-list">
+        @for (city of cityList(); track city) {
+          <li>
+            <span class="city-pin" aria-hidden="true"></span>
+            <span>{{ city }}</span>
+            <span class="city-arrow" aria-hidden="true">↗</span>
+          </li>
+        }
+      </ul>
+    </article>
+  </section>
+
+  <section class="signal-tip" aria-label="Signal tip">
+    <span class="tip-mark" aria-hidden="true">i</span>
+    <p><strong>Signal tip</strong> Use <code>signal()</code> to create a value, call it to read, and use <code>.set()</code> to update it.</p>
+  </section>
+</main>
