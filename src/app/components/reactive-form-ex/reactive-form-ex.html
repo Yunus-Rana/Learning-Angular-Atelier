@@ -1,0 +1,118 @@
+<main class="page-shell">
+  <header class="page-hero">
+    <p class="eyebrow">Practice module 05</p>
+    <h1 class="page-title">Reactive forms</h1>
+    <p class="page-description">
+      Build a customer profile with a form that keeps its data and validation in sync with the component.
+    </p>
+  </header>
+
+  <section class="registration-layout" aria-label="Customer registration">
+    <article class="panel registration-panel">
+      <div class="registration-heading">
+        <div class="registration-icon" aria-hidden="true">+</div>
+        <div>
+          <span class="section-label">New customer</span>
+          <h2 class="section-heading">Create your profile</h2>
+          <p class="registration-intro">A few details are all we need to get started.</p>
+        </div>
+      </div>
+
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="registration-form">
+        <input type="hidden" formControlName="custId" />
+
+        <div class="form-field">
+          <label class="field-label" for="name">Full name</label>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            class="atelier-input"
+            placeholder="e.g. Alex Morgan"
+            autocomplete="name"
+            required
+            [class.is-invalid]="userForm.get('name')?.invalid && userForm.get('name')?.touched"
+            [attr.aria-invalid]="userForm.get('name')?.invalid && userForm.get('name')?.touched"
+            aria-describedby="name-error"
+          />
+          @if (userForm.get('name')?.invalid && userForm.get('name')?.touched) {
+            <span class="field-error" id="name-error">Please enter your full name.</span>
+          }
+        </div>
+
+        <div class="form-field">
+          <label class="field-label" for="mobileNo">Mobile number</label>
+          <input
+            id="mobileNo"
+            type="tel"
+            formControlName="mobileNo"
+            class="atelier-input"
+            placeholder="Your contact number"
+            autocomplete="tel"
+            inputmode="tel"
+            required
+            [class.is-invalid]="userForm.get('mobileNo')?.invalid && userForm.get('mobileNo')?.touched"
+            [attr.aria-invalid]="userForm.get('mobileNo')?.invalid && userForm.get('mobileNo')?.touched"
+            aria-describedby="mobile-error"
+          />
+          @if (userForm.get('mobileNo')?.invalid && userForm.get('mobileNo')?.touched) {
+            <span class="field-error" id="mobile-error">Please enter your mobile number.</span>
+          }
+        </div>
+
+        <div class="form-field">
+          <label class="field-label" for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="atelier-input"
+            placeholder="Create a password"
+            autocomplete="new-password"
+            required
+            [class.is-invalid]="userForm.get('password')?.invalid && userForm.get('password')?.touched"
+            [attr.aria-invalid]="userForm.get('password')?.invalid && userForm.get('password')?.touched"
+            aria-describedby="password-error"
+          />
+          @if (userForm.get('password')?.invalid && userForm.get('password')?.touched) {
+            <span class="field-error" id="password-error">Please enter a password.</span>
+          }
+        </div>
+
+        <button type="submit" class="atelier-button submit-button" [disabled]="userForm.invalid">
+          <span>Create customer profile</span>
+          <span aria-hidden="true">→</span>
+        </button>
+        <p class="form-footnote">Your details are used to set up your customer profile.</p>
+      </form>
+    </article>
+
+    <aside class="panel registration-aside" aria-label="About this exercise">
+      <span class="section-label">In a nutshell</span>
+      <h2 class="section-heading">One form, three controls</h2>
+      <p class="aside-description">
+        Each field is connected to the component’s form model and checked before submission.
+      </p>
+
+      <ol class="form-steps">
+        <li>
+          <span class="step-number">01</span>
+          <span><strong>Enter your details</strong><small>Name, phone, and password</small></span>
+        </li>
+        <li>
+          <span class="step-number">02</span>
+          <span><strong>See validation in action</strong><small>Required fields are checked as you type</small></span>
+        </li>
+        <li>
+          <span class="step-number">03</span>
+          <span><strong>Submit when ready</strong><small>The button activates when the form is valid</small></span>
+        </li>
+      </ol>
+
+      <div class="aside-note">
+        <span class="note-mark" aria-hidden="true">i</span>
+        <p>This practice form demonstrates client-side validation. No information is sent to a server.</p>
+      </div>
+    </aside>
+  </section>
+</main>

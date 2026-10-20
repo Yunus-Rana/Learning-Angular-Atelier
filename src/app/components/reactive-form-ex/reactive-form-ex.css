@@ -1,0 +1,215 @@
+.registration-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(270px, 0.85fr);
+  align-items: start;
+  gap: 18px;
+}
+
+.registration-panel {
+  padding: 30px;
+}
+
+.registration-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 27px;
+}
+
+.registration-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #dcebe2;
+  border-radius: 15px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.registration-heading .section-label {
+  margin-bottom: 4px;
+}
+
+.registration-heading .section-heading {
+  margin: 0;
+}
+
+.registration-intro,
+.aside-description {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.registration-form {
+  display: grid;
+  gap: 19px;
+}
+
+.form-field {
+  min-width: 0;
+}
+
+.form-field .field-label {
+  margin-bottom: 8px;
+}
+
+.form-field .atelier-input {
+  min-height: 48px;
+}
+
+.form-field .atelier-input::placeholder {
+  color: #a2aca5;
+}
+
+.form-field .atelier-input.is-invalid {
+  border-color: #c9796e;
+  outline: 3px solid rgb(201 121 110 / 10%);
+}
+
+.field-error {
+  display: block;
+  margin-top: 7px;
+  color: #a94e45;
+  font-size: 12px;
+}
+
+.submit-button {
+  display: flex;
+  width: 100%;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 3px;
+  padding: 0 17px;
+}
+
+.submit-button:disabled {
+  cursor: not-allowed;
+  background: #aabbb2;
+  color: #f7faf8;
+  transform: none;
+}
+
+.form-footnote {
+  margin: -9px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.registration-aside {
+  padding: 27px;
+}
+
+.registration-aside .section-heading {
+  margin-bottom: 0;
+}
+
+.form-steps {
+  display: grid;
+  margin: 25px 0 0;
+  padding: 0;
+  gap: 21px;
+  list-style: none;
+}
+
+.form-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.step-number {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #e5ece7;
+  border-radius: 10px;
+  background: #f6f9f6;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.form-steps li > span:last-child {
+  display: grid;
+  gap: 4px;
+  padding-top: 1px;
+}
+
+.form-steps strong {
+  color: #3d4c5b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-steps small {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.aside-note {
+  display: flex;
+  margin-top: 27px;
+  padding: 14px;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1px solid #e7eee8;
+  border-radius: 12px;
+  background: #f7faf7;
+}
+
+.note-mark {
+  display: grid;
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: #e7f2ed;
+  color: var(--green-dark);
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.aside-note p {
+  margin: 0;
+  color: #68786f;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .registration-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .registration-panel,
+  .registration-aside {
+    padding: 21px;
+  }
+
+  .registration-heading {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .registration-icon {
+    width: 42px;
+    height: 42px;
+  }
+}
