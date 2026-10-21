@@ -1,0 +1,186 @@
+<main class="page-shell">
+  <header class="page-hero">
+    <p class="eyebrow">Practice module 08</p>
+    <h1 class="page-title">Get data from an API</h1>
+    <p class="page-description">
+      Explore how Angular fetches data from remote services and displays it in a responsive view.
+    </p>
+  </header>
+
+  <section class="api-actions" aria-label="API examples">
+    <article class="panel api-action-card">
+      <div class="api-card-heading">
+        <span class="api-icon users-icon" aria-hidden="true">U</span>
+        <div>
+          <span class="section-label">JSONPlaceholder</span>
+          <h2 class="section-heading">User directory</h2>
+        </div>
+      </div>
+      <p class="api-card-copy">User records are fetched automatically when this page opens.</p>
+      <span class="api-result-count">{{ userList().length }} users loaded</span>
+    </article>
+
+    <article class="panel api-action-card">
+      <div class="api-card-heading">
+        <span class="api-icon photos-icon" aria-hidden="true">P</span>
+        <div>
+          <span class="section-label">JSONPlaceholder</span>
+          <h2 class="section-heading">Photo gallery</h2>
+        </div>
+      </div>
+      <p class="api-card-copy">Load a collection of sample photos and their titles.</p>
+      <button class="atelier-button api-button" type="button" (click)="getPhotos()" [disabled]="photosLoading()">
+        <span>{{ photosLoading() ? 'Loading photos…' : 'Get photos' }}</span>
+        <span aria-hidden="true">→</span>
+      </button>
+    </article>
+
+    <article class="panel api-action-card">
+      <div class="api-card-heading">
+        <span class="api-icon products-icon" aria-hidden="true">G</span>
+        <div>
+          <span class="section-label">Mini project API</span>
+          <h2 class="section-heading">Product collection</h2>
+        </div>
+      </div>
+      <p class="api-card-copy">Browse product names, categories, prices, and images.</p>
+      <button class="atelier-button api-button" type="button" (click)="getAllProducts()" [disabled]="productsLoading()">
+        <span>{{ productsLoading() ? 'Loading products…' : 'Get products' }}</span>
+        <span aria-hidden="true">→</span>
+      </button>
+    </article>
+  </section>
+
+  <section class="api-results section-spaced-large" aria-label="API results">
+    <article class="panel result-panel">
+      <div class="result-heading">
+        <div>
+          <span class="section-label">People</span>
+          <h2 class="section-heading">User directory</h2>
+        </div>
+        <span class="result-badge">{{ userList().length }} records</span>
+      </div>
+
+      @if (usersLoading()) {
+        <div class="api-state" role="status">
+          <span class="loading-spinner" aria-hidden="true"></span>
+          <span>Fetching user records…</span>
+        </div>
+      } @else if (usersError()) {
+        <p class="api-error" role="alert">{{ usersError() }}</p>
+      } @else if (userList().length === 0) {
+        <p class="api-empty">No user records were returned.</p>
+      } @else {
+        <div class="user-grid">
+          @for (user of userList(); track user.id) {
+            <article class="user-card">
+              <div class="user-avatar" aria-hidden="true">{{ user.name.charAt(0) }}</div>
+              <div class="user-details">
+                <h3>{{ user.name }}</h3>
+                <a [href]="'mailto:' + user.email">{{ user.email }}</a>
+              </div>
+              <dl class="user-meta">
+                <div>
+                  <dt>Location</dt>
+                  <dd>{{ user.address.city }}</dd>
+                </div>
+                <div>
+                  <dt>Company</dt>
+                  <dd>{{ user.company.name }}</dd>
+                </div>
+              </dl>
+            </article>
+          }
+        </div>
+      }
+    </article>
+
+    <article class="panel result-panel section-spaced">
+      <div class="result-heading">
+        <div>
+          <span class="section-label">Snapshots</span>
+          <h2 class="section-heading">Photo gallery</h2>
+        </div>
+        @if (userPhotos().length > 0) {
+          <span class="result-badge">{{ userPhotos().length }} photos</span>
+        }
+      </div>
+
+      @if (photosLoading()) {
+        <div class="api-state" role="status">
+          <span class="loading-spinner" aria-hidden="true"></span>
+          <span>Fetching photos…</span>
+        </div>
+      } @else if (photosError()) {
+        <p class="api-error" role="alert">{{ photosError() }}</p>
+      } @else if (userPhotos().length === 0) {
+        <div class="api-empty">
+          <span class="empty-mark" aria-hidden="true">P</span>
+          <p>Your photo gallery is ready when you are.</p>
+          <span>Choose <strong>Get photos</strong> above to load the collection.</span>
+        </div>
+      } @else {
+        <div class="photo-grid">
+          @for (photo of userPhotos().slice(0, 12); track photo.id) {
+            <article class="photo-card">
+              <img [src]="photo.thumbnailUrl" [alt]="photo.title" loading="lazy" />
+              <div class="photo-caption">
+                <span>Photo {{ photo.id }}</span>
+                <h3>{{ photo.title }}</h3>
+              </div>
+            </article>
+          }
+        </div>
+        @if (userPhotos().length > 12) {
+          <p class="collection-note">Showing 12 of {{ userPhotos().length }} photos.</p>
+        }
+      }
+    </article>
+
+    <article class="panel result-panel section-spaced">
+      <div class="result-heading">
+        <div>
+          <span class="section-label">Store</span>
+          <h2 class="section-heading">Product collection</h2>
+        </div>
+        @if (products().length > 0) {
+          <span class="result-badge">{{ products().length }} products</span>
+        }
+      </div>
+
+      @if (productsLoading()) {
+        <div class="api-state" role="status">
+          <span class="loading-spinner" aria-hidden="true"></span>
+          <span>Fetching products…</span>
+        </div>
+      } @else if (productsError()) {
+        <p class="api-error" role="alert">{{ productsError() }}</p>
+      } @else if (products().length === 0) {
+        <div class="api-empty">
+          <span class="empty-mark" aria-hidden="true">G</span>
+          <p>No products loaded yet.</p>
+          <span>Choose <strong>Get products</strong> above to browse the collection.</span>
+        </div>
+      } @else {
+        <div class="product-grid">
+          @for (product of products(); track product.productId) {
+            <article class="product-card">
+              <div class="product-image-wrap">
+                <img [src]="product.productImageUrl" [alt]="product.productName" loading="lazy" />
+                <span class="product-category">{{ product.categoryName }}</span>
+              </div>
+              <div class="product-details">
+                <h3>{{ product.productName }}</h3>
+                <p>{{ product.productDescription }}</p>
+                <div class="product-footer">
+                  <strong>Price {{ product.productPrice }}</strong>
+                  <span>{{ product.deliveryTimeSpan }}</span>
+                </div>
+              </div>
+            </article>
+          }
+        </div>
+      }
+    </article>
+  </section>
+</main>
