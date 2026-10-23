@@ -106,10 +106,23 @@
 
 .registration-aside {
   padding: 27px;
+  border-color: #214d43;
+  background: linear-gradient(145deg, #2a6656, #204d44);
+  box-shadow: 0 16px 38px rgb(32 77 68 / 18%);
+  color: #f4f8f5;
+}
+
+.registration-aside .section-label {
+  color: #c2d8c8;
 }
 
 .registration-aside .section-heading {
   margin-bottom: 0;
+  color: #fff;
+}
+
+.registration-aside .aside-description {
+  color: #d0e0d7;
 }
 
 .form-steps {
@@ -132,10 +145,10 @@
   height: 32px;
   flex: 0 0 auto;
   place-items: center;
-  border: 1px solid #e5ece7;
+  border: 1px solid rgb(226 240 230 / 24%);
   border-radius: 10px;
-  background: #f6f9f6;
-  color: var(--green);
+  background: rgb(255 255 255 / 9%);
+  color: #e2c28e;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.04em;
@@ -148,13 +161,13 @@
 }
 
 .form-steps strong {
-  color: #3d4c5b;
+  color: #fff;
   font-size: 12px;
   font-weight: 700;
 }
 
 .form-steps small {
-  color: var(--muted);
+  color: #c8dbd0;
   font-size: 11px;
   line-height: 1.5;
 }
@@ -165,9 +178,9 @@
   padding: 14px;
   align-items: flex-start;
   gap: 10px;
-  border: 1px solid #e7eee8;
+  border: 1px solid rgb(226 240 230 / 20%);
   border-radius: 12px;
-  background: #f7faf7;
+  background: rgb(255 255 255 / 8%);
 }
 
 .note-mark {
@@ -177,8 +190,8 @@
   flex: 0 0 auto;
   place-items: center;
   border-radius: 50%;
-  background: #e7f2ed;
-  color: var(--green-dark);
+  background: #e0c18c;
+  color: #244f43;
   font-family: Georgia, serif;
   font-size: 13px;
   font-weight: 700;
@@ -186,7 +199,7 @@
 
 .aside-note p {
   margin: 0;
-  color: #68786f;
+  color: #e0ebe4;
   font-size: 11px;
   line-height: 1.6;
 }

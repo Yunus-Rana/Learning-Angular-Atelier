@@ -115,10 +115,23 @@
 
 .client-aside {
   padding: 26px;
+  border-color: #214d43;
+  background: linear-gradient(145deg, #2a6656, #204d44);
+  box-shadow: 0 16px 38px rgb(32 77 68 / 18%);
+  color: #f4f8f5;
+}
+
+.client-aside .section-label {
+  color: #c2d8c8;
 }
 
 .client-aside .section-heading {
   margin-bottom: 0;
+  color: #fff;
+}
+
+.client-aside .aside-copy {
+  color: #d0e0d7;
 }
 
 .aside-stat {
@@ -127,9 +140,9 @@
   padding: 16px;
   align-items: center;
   gap: 13px;
-  border: 1px solid #e7ece8;
+  border: 1px solid rgb(226 240 230 / 20%);
   border-radius: 13px;
-  background: #f8faf8;
+  background: rgb(255 255 255 / 9%);
 }
 
 .stat-icon {
@@ -145,13 +158,13 @@
 }
 
 .aside-stat strong {
-  color: var(--green-dark);
+  color: #fff;
   font-size: 21px;
   line-height: 1;
 }
 
 .aside-stat > div span {
-  color: var(--muted);
+  color: #c8dbd0;
   font-size: 10px;
 }
 
@@ -161,9 +174,9 @@
   padding: 13px;
   align-items: flex-start;
   gap: 9px;
-  border: 1px solid #e7eee8;
+  border: 1px solid rgb(226 240 230 / 20%);
   border-radius: 12px;
-  background: #f7faf7;
+  background: rgb(255 255 255 / 8%);
 }
 
 .note-mark {
@@ -173,8 +186,8 @@
   flex: 0 0 auto;
   place-items: center;
   border-radius: 50%;
-  background: #e7f2ed;
-  color: var(--green-dark);
+  background: #e0c18c;
+  color: #244f43;
   font-family: Georgia, serif;
   font-size: 12px;
   font-weight: 700;
@@ -182,13 +195,25 @@
 
 .aside-note p {
   margin: 0;
-  color: #68786f;
+  color: #e0ebe4;
   font-size: 10px;
   line-height: 1.65;
 }
 
 .client-list-panel {
   padding: 27px;
+  border-color: #214d43;
+  background: linear-gradient(145deg, #2a6656, #204d44);
+  box-shadow: 0 16px 38px rgb(32 77 68 / 18%);
+  color: #f4f8f5;
+}
+
+.client-list-panel .section-label {
+  color: #c2d8c8;
+}
+
+.client-list-panel .section-heading {
+  color: #fff;
 }
 
 .list-heading {
@@ -209,16 +234,37 @@
 
 .result-count {
   padding: 7px 10px;
-  border: 1px solid #e5ece7;
+  border: 1px solid rgb(226 240 230 / 22%);
   border-radius: 999px;
-  background: #f6f9f6;
-  color: #60766b;
+  background: rgb(255 255 255 / 9%);
+  color: #e0ebe4;
   font-size: 10px;
   font-weight: 700;
 }
 
+.client-list-panel .table-wrap {
+  border-color: rgb(226 240 230 / 22%);
+}
+
 .client-table {
   min-width: 820px;
+}
+
+.client-list-panel .atelier-table {
+  color: #e0ebe4;
+}
+
+.client-list-panel .atelier-table th {
+  background: rgb(255 255 255 / 12%);
+  color: #d3e3d8;
+}
+
+.client-list-panel .atelier-table td {
+  border-color: rgb(226 240 230 / 16%);
+}
+
+.client-list-panel .atelier-table tbody tr:hover {
+  background: rgb(255 255 255 / 8%);
 }
 
 .client-identity {
@@ -237,12 +283,12 @@
 }
 
 .client-name {
-  color: #334456;
+  color: #fff;
   font-weight: 700;
 }
 
 .client-email {
-  color: var(--green-dark);
+  color: #d7c18f;
   text-decoration: none;
 }
 
@@ -289,9 +335,9 @@
   padding: 24px;
   justify-items: center;
   align-content: center;
-  border: 1px dashed #d8e3db;
+  border: 1px dashed rgb(226 240 230 / 30%);
   border-radius: 12px;
-  background: #f8faf8;
+  background: rgb(255 255 255 / 8%);
   text-align: center;
 }
 
@@ -305,14 +351,14 @@
 
 .empty-directory h3 {
   margin: 0;
-  color: #42564b;
+  color: #fff;
   font-size: 14px;
   font-weight: 700;
 }
 
 .empty-directory p {
   margin: 5px 0 0;
-  color: var(--muted);
+  color: #c8dbd0;
   font-size: 11px;
   line-height: 1.6;
 }
