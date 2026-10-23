@@ -1,0 +1,229 @@
+<main class="page-shell">
+  <header class="page-hero">
+    <p class="eyebrow">Practice module 09</p>
+    <h1 class="page-title">Client management</h1>
+    <p class="page-description">
+      Create and manage client records. Add a new client or select a record to update its details.
+    </p>
+  </header>
+
+  <section class="crud-layout" aria-label="Client management workspace">
+    <article class="panel client-form-panel">
+      <div class="form-heading">
+        <div class="form-icon" aria-hidden="true">✦</div>
+        <div>
+          <span class="section-label">{{ newClientObj.clientId > 0 ? 'Edit record' : 'New record' }}</span>
+          <h2 class="section-heading">
+            {{ newClientObj.clientId > 0 ? 'Update client details' : 'Add a client' }}
+          </h2>
+          <p class="form-intro">Enter the business and contact information below.</p>
+        </div>
+      </div>
+
+      <form
+        class="client-form"
+        #clientForm="ngForm"
+        (ngSubmit)="newClientObj.clientId > 0 ? OnUpdateClient() : onSaveClient()"
+      >
+        <div class="form-field">
+          <label class="field-label" for="clientName">Client name</label>
+          <input
+            class="atelier-input"
+            id="clientName"
+            name="clientName"
+            type="text"
+            [(ngModel)]="newClientObj.clientName"
+            placeholder="e.g. Northstar Studio"
+            autocomplete="organization"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="field-label" for="businessName">Business name</label>
+          <input
+            class="atelier-input"
+            id="businessName"
+            name="businessName"
+            type="text"
+            [(ngModel)]="newClientObj.businessName"
+            placeholder="Registered business name"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="field-label" for="contactPerson">Contact person</label>
+          <input
+            class="atelier-input"
+            id="contactPerson"
+            name="contactPerson"
+            type="text"
+            [(ngModel)]="newClientObj.contactPerson"
+            placeholder="Full name"
+            autocomplete="name"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="field-label" for="email">Email address</label>
+          <input
+            class="atelier-input"
+            id="email"
+            name="email"
+            type="email"
+            [(ngModel)]="newClientObj.email"
+            placeholder="name@company.com"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="field-label" for="contactNo">Phone number</label>
+          <input
+            class="atelier-input"
+            id="contactNo"
+            name="contactNo"
+            type="tel"
+            [(ngModel)]="newClientObj.contactNo"
+            placeholder="Primary contact number"
+            autocomplete="tel"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="field-label" for="altContactNo">Alternate phone <span>(optional)</span></label>
+          <input
+            class="atelier-input"
+            id="altContactNo"
+            name="altContactNo"
+            type="tel"
+            [(ngModel)]="newClientObj.altContactNo"
+            placeholder="Additional contact number"
+            autocomplete="tel"
+          />
+        </div>
+
+        <div class="form-field form-field-wide">
+          <label class="field-label" for="logo">Logo URL <span>(optional)</span></label>
+          <input
+            class="atelier-input"
+            id="logo"
+            name="logo"
+            type="url"
+            [(ngModel)]="newClientObj.logo"
+            placeholder="https://example.com/logo.png"
+          />
+          <span class="field-hint">Paste a public image URL to show a logo in the client list.</span>
+        </div>
+
+        <div class="form-actions form-field-wide">
+          <button class="atelier-button submit-button" type="submit" [disabled]="clientForm.invalid">
+            <span>{{ newClientObj.clientId > 0 ? 'Update client' : 'Save client' }}</span>
+            <span aria-hidden="true">{{ newClientObj.clientId > 0 ? '↻' : '→' }}</span>
+          </button>
+          @if (newClientObj.clientId > 0) {
+            <span class="editing-note">Editing client #{{ newClientObj.clientId }}</span>
+          } @else {
+            <span class="editing-note">Created date is added automatically.</span>
+          }
+        </div>
+      </form>
+    </article>
+
+    <aside class="panel client-aside" aria-label="Client management tips">
+      <span class="section-label">Workspace</span>
+      <h2 class="section-heading">Keep every client in view</h2>
+      <p class="aside-copy">
+        Your client directory stays close by while you add or update business details.
+      </p>
+
+      <div class="aside-stat">
+        <span class="stat-icon" aria-hidden="true">C</span>
+        <div>
+          <strong>{{ clientlist().length }}</strong>
+          <span>{{ clientlist().length === 1 ? 'client in your directory' : 'clients in your directory' }}</span>
+        </div>
+      </div>
+
+      <div class="aside-note">
+        <span class="note-mark" aria-hidden="true">i</span>
+        <p>Select <strong>Edit</strong> on a client to load its details into the form. The save action changes to update mode.</p>
+      </div>
+    </aside>
+  </section>
+
+  <section class="panel client-list-panel section-spaced-large" aria-label="Client directory">
+    <div class="list-heading">
+      <div>
+        <span class="section-label">Directory</span>
+        <h2 class="section-heading">Your clients</h2>
+      </div>
+      <span class="result-count">{{ clientlist().length }} records</span>
+    </div>
+
+    @if (clientlist().length === 0) {
+      <div class="empty-directory">
+        <span class="empty-mark" aria-hidden="true">C</span>
+        <h3>No clients to show yet</h3>
+        <p>Add a client using the form above and it will appear here.</p>
+      </div>
+    } @else {
+      <div class="table-wrap">
+        <table class="atelier-table client-table">
+          <thead>
+            <tr>
+              <th scope="col">Client</th>
+              <th scope="col">Business</th>
+              <th scope="col">Contact person</th>
+              <th scope="col">Email</th>
+              <th scope="col">Created</th>
+              <th scope="col"><span class="visually-hidden">Actions</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of clientlist(); track item.clientId; let index = $index) {
+              <tr>
+                <td>
+                  <div class="client-identity">
+                    @if (item.logo) {
+                      <img class="client-logo" [src]="item.logo" [alt]="item.clientName + ' logo'" loading="lazy" />
+                    } @else {
+                      <span class="client-avatar" aria-hidden="true">
+                        {{ item.clientName ? item.clientName.charAt(0).toUpperCase() : 'C' }}
+                      </span>
+                    }
+                    <span class="client-name">{{ item.clientName }}</span>
+                  </div>
+                </td>
+                <td>{{ item.businessName || '—' }}</td>
+                <td>{{ item.contactPerson || '—' }}</td>
+                <td>
+                  @if (item.email) {
+                    <a class="client-email" [href]="'mailto:' + item.email">{{ item.email }}</a>
+                  } @else {
+                    <span>—</span>
+                  }
+                </td>
+                <td>{{ item.createdDate | date: 'mediumDate' }}</td>
+                <td>
+                  <div class="row-actions">
+                    <button class="row-button edit-button" type="button" (click)="onEdit(item)">
+                      Edit
+                    </button>
+                    <button class="row-button delete-button" type="button" (click)="onDelete(item.clientId)">
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </section>
+</main>
