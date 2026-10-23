@@ -24,7 +24,7 @@ export class ClientCrud {
     createdDate: new Date(),
     logo: '',
   };
-  //get part -- starts
+  //read part -- starts
   ngOnInit() {
     this.getAllClients();
   }
@@ -36,10 +36,9 @@ export class ClientCrud {
     });
   } //ends
 
-  //post part -- starts
+  //create part -- starts
   onSaveClient() {
-    this.http
-      .post('https://api.freeprojectapi.com/api/SmartParking/AddClient', this.newClientObj)
+    this.http.post('https://api.freeprojectapi.com/api/SmartParking/AddClient', this.newClientObj)
       .subscribe({
         next: (res: any) => {
           if (res.result) {
