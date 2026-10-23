@@ -52,107 +52,6 @@ select {
   outline-offset: 3px;
 }
 
-.atelier-header {
-  position: relative;
-  z-index: 1;
-  min-width: 0;
-  border-bottom: 1px solid rgb(231 234 230 / 85%);
-  background: rgb(255 255 255 / 88%);
-  box-shadow: 0 4px 24px rgb(31 48 58 / 3%);
-}
-
-.atelier-nav {
-  display: flex;
-  width: min(1180px, calc(100% - 48px));
-  min-height: 0;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px 16px;
-  padding: 14px 0 10px;
-}
-
-.atelier-brand {
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  gap: 12px;
-  color: var(--ink);
-  text-decoration: none;
-}
-
-.brand-mark {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border-radius: 14px;
-  background: var(--green);
-  box-shadow: 0 7px 16px rgb(49 124 104 / 22%);
-  color: white;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  font-size: 21px;
-  font-weight: 800;
-}
-
-.brand-copy {
-  display: grid;
-  gap: 1px;
-}
-
-.brand-name {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: -0.035em;
-}
-
-.brand-caption {
-  color: var(--muted);
-  font-size: 11px;
-}
-
-.nav-links {
-  display: flex;
-  min-width: 0;
-  width: 100%;
-  order: 3;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-.atelier-nav .nav-link {
-  flex: 0 0 auto;
-  padding: 10px 13px;
-  border-radius: 9px;
-  color: #657184;
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background-color 160ms ease, color 160ms ease;
-}
-
-.atelier-nav .nav-link:hover,
-.atelier-nav .nav-link.active {
-  background: var(--green-soft);
-  color: var(--green-dark);
-}
-
-.nav-note {
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  gap: 8px;
-  color: #718096;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
 .status-dot {
   width: 7px;
   height: 7px;
@@ -495,17 +394,6 @@ select {
   line-height: 1.8;
 }
 
-@media (max-width: 1200px) {
-  .atelier-nav {
-    width: calc(100% - 40px);
-    column-gap: 14px;
-  }
-
-  .nav-note {
-    display: none;
-  }
-}
-
 @media (max-width: 860px) {
   .page-shell {
     width: min(100% - 32px, 680px);
@@ -523,32 +411,6 @@ select {
 }
 
 @media (max-width: 600px) {
-  .atelier-nav {
-    width: calc(100% - 28px);
-    gap: 8px 12px;
-    padding-top: 10px;
-  }
-
-  .brand-caption {
-    display: none;
-  }
-
-  .brand-mark {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-  }
-
-  .nav-links {
-    gap: 3px;
-    padding: 2px 0 4px;
-  }
-
-  .atelier-nav .nav-link {
-    padding: 8px 10px;
-    font-size: 12px;
-  }
-
   .page-shell {
     width: calc(100% - 32px);
     padding-top: 34px;
@@ -576,11 +438,6 @@ select {
 }
 
 @media (max-width: 380px) {
-  .atelier-nav .nav-link {
-    padding: 8px;
-    font-size: 11px;
-  }
-
   .panel {
     padding: 17px;
   }

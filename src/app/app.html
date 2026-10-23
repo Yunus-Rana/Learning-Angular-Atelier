@@ -1,27 +1,131 @@
-<header class="atelier-header">
-  <nav class="atelier-nav" aria-label="Main navigation">
-    <a class="atelier-brand" routerLink="variables" aria-label="Angular Atelier home">
-      <span class="brand-mark">A</span>
-      <span class="brand-copy">
-        <span class="brand-name">Angular Atelier</span>
-        <span class="brand-caption">A frontend practice studio</span>
-      </span>
-    </a>
+<div class="app-shell" (keydown.escape)="closeNavigation()">
+  <header class="atelier-header">
+    <div class="atelier-nav">
+      <a class="atelier-brand" routerLink="variables" aria-label="Angular Atelier home">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span class="brand-copy">
+          <span class="brand-name">Angular Atelier</span>
+          <span class="brand-caption">A frontend practice studio</span>
+        </span>
+      </a>
 
-    <div class="nav-links">
-      <a class="nav-link" routerLinkActive="active" routerLink="variables">Variables</a>
-      <a class="nav-link" routerLinkActive="active" routerLink="databinding">Data Binding</a>
-      <a class="nav-link" routerLinkActive="active" routerLink="controlflow">Control Flow</a>
-      <a class="nav-link" routerLinkActive="active" routerLink="directives">Directives</a>
-      <a class="nav-link" routerLinkActive="active" routerLink="reactiveform">Reactive Forms</a>
-      <a class="nav-link" routerLinkActive="active" routerLink="signalbasics">Signal Basics</a>
-      <a class="nav-link" routerLinkActive="active" routerLink="signalforms">Signal Forms</a>
-      <a class="nav-link" routerLinkActive="active" routerLink="getapi">Get API</a>
-      <a class="nav-link" routerLinkActive="active" routerLink="clientcrud">Client CRUD</a>
+      <div class="header-message">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Small lessons. Practical Angular.</span>
+      </div>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        (click)="toggleNavigation()"
+        [attr.aria-expanded]="isNavigationOpen()"
+        aria-controls="practice-navigation"
+        [attr.aria-label]="isNavigationOpen() ? 'Close practice navigation' : 'Open practice navigation'"
+      >
+        @if (isNavigationOpen()) {
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
+        } @else {
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        }
+        <span>{{ isNavigationOpen() ? 'Close' : 'Explore modules' }}</span>
+      </button>
     </div>
+  </header>
 
-    <span class="nav-note"><span class="status-dot"></span> Hands On Practice</span>
-  </nav>
-</header>
+  @if (isNavigationOpen()) {
+    <button
+      class="drawer-backdrop"
+      type="button"
+      aria-label="Close navigation menu"
+      (click)="closeNavigation()"
+    ></button>
 
-<router-outlet></router-outlet>
+    <aside class="navigation-drawer" id="practice-navigation" aria-label="Practice module navigation">
+      <div class="drawer-heading">
+        <div>
+          <span class="section-label">Angular Atelier</span>
+          <h2>Explore the studio</h2>
+        </div>
+        <button class="drawer-close" type="button" aria-label="Close navigation" (click)="closeNavigation()">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6 6 12 12M18 6 6 18" />
+          </svg>
+        </button>
+      </div>
+
+      <p class="drawer-intro">
+        Choose a practice module to open its examples and build your Angular skills step by step.
+      </p>
+
+      <nav class="drawer-nav" aria-label="Practice modules">
+        <section class="nav-group" aria-labelledby="nav-foundations">
+          <h3 id="nav-foundations">Foundations</h3>
+          <a class="drawer-link" routerLink="variables" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="closeNavigation()">
+            <span class="module-index">01</span>
+            <span class="module-copy"><strong>Variables</strong><small>Values, objects, and arrays</small></span>
+            <span class="module-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="drawer-link" routerLink="databinding" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="closeNavigation()">
+            <span class="module-index">02</span>
+            <span class="module-copy"><strong>Data Binding</strong><small>Connect component and view</small></span>
+            <span class="module-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="drawer-link" routerLink="controlflow" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="closeNavigation()">
+            <span class="module-index">03</span>
+            <span class="module-copy"><strong>Control Flow</strong><small>Render and repeat content</small></span>
+            <span class="module-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="drawer-link" routerLink="directives" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="closeNavigation()">
+            <span class="module-index">04</span>
+            <span class="module-copy"><strong>Directives</strong><small>Change styles and behavior</small></span>
+            <span class="module-arrow" aria-hidden="true">↗</span>
+          </a>
+        </section>
+
+        <section class="nav-group" aria-labelledby="nav-reactivity">
+          <h3 id="nav-reactivity">Forms &amp; reactivity</h3>
+          <a class="drawer-link" routerLink="reactiveform" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="closeNavigation()">
+            <span class="module-index">05</span>
+            <span class="module-copy"><strong>Reactive Forms</strong><small>Form groups and validation</small></span>
+            <span class="module-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="drawer-link" routerLink="signalbasics" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="closeNavigation()">
+            <span class="module-index">06</span>
+            <span class="module-copy"><strong>Signal Basics</strong><small>Read and update signals</small></span>
+            <span class="module-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="drawer-link" routerLink="signalforms" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="closeNavigation()">
+            <span class="module-index">07</span>
+            <span class="module-copy"><strong>Signal Forms</strong><small>Signal-powered form fields</small></span>
+            <span class="module-arrow" aria-hidden="true">↗</span>
+          </a>
+        </section>
+
+        <section class="nav-group" aria-labelledby="nav-data">
+          <h3 id="nav-data">Working with data</h3>
+          <a class="drawer-link" routerLink="getapi" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="closeNavigation()">
+            <span class="module-index">08</span>
+            <span class="module-copy"><strong>Get API</strong><small>Fetch and display records</small></span>
+            <span class="module-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="drawer-link" routerLink="clientcrud" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="closeNavigation()">
+            <span class="module-index">09</span>
+            <span class="module-copy"><strong>Client CRUD</strong><small>Create and manage clients</small></span>
+            <span class="module-arrow" aria-hidden="true">↗</span>
+          </a>
+        </section>
+      </nav>
+
+      <footer class="drawer-footer">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>A hands-on Angular practice studio</span>
+      </footer>
+    </aside>
+  }
+
+  <router-outlet></router-outlet>
+</div>
