@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Master } from '../../services/master';
 
 @Component({
   imports: [FormsModule],
@@ -89,5 +90,18 @@ export class ControlFlow {
   toggleDiv(){
     this.isdiv1Visible = !this.isdiv1Visible;
   }
+
+  mastersrv = inject(Master)
+  storeLoggedData(){
+    this.mastersrv.loggeduser =  'A-B-C'
+  }
+
+  originalcardno: string = '1234323487956700'
+  formattedcard: string = ''
+
+  constructor(){
+    this.formattedcard = this.mastersrv.getformattedcardNo(this.originalcardno)
+  }
+
 }
 

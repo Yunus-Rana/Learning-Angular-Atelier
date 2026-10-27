@@ -107,4 +107,34 @@
       }
     </div>
   </section>
+
+  <section class="service-demo panel" aria-labelledby="service-demo-title">
+    <div class="service-demo-copy">
+      <span class="section-label">Shared service</span>
+      <h2 class="section-heading" id="service-demo-title">Master service</h2>
+      <p class="service-description">
+        The service formats a card number and keeps logged-user data available to other components.
+      </p>
+    </div>
+
+    <div class="service-results">
+      <div class="service-result">
+        <span class="service-result-label">Formatted card number</span>
+        <strong class="card-number">{{ formattedcard }}</strong>
+      </div>
+      <div class="service-result">
+        <span class="service-result-label">Logged user</span>
+        @if (mastersrv.loggeduser) {
+          <strong class="service-value">{{ mastersrv.loggeduser }}</strong>
+        } @else {
+          <span class="service-pending">No user stored yet</span>
+        }
+      </div>
+    </div>
+
+    <button class="btn atelier-button service-action" (click)="storeLoggedData()" type="button">
+      Store logged user
+    </button>
+  </section>
+
 </main>

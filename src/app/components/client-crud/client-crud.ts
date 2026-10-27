@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Master } from '../../services/master';
 
 @Component({
   imports: [FormsModule, DatePipe],
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 export class ClientCrud {
   http = inject(HttpClient);
   clientlist: WritableSignal<any[]> = signal([]);
-  
+
   newClientObj: any = {
     clientId: 0,
     clientName: '',
@@ -25,9 +26,15 @@ export class ClientCrud {
     createdDate: new Date(),
     logo: '',
   };
+
+  constructor(private mastersrv: Master){
+    const loggedusername = this.mastersrv.loggeduser
+  }
+
   //read part -- starts
   ngOnInit() {
     this.getAllClients();
+    
   }
   getAllClients() {
     this.http.get('https://api.freeprojectapi.com/api/SmartParking/GetAllClients').subscribe({
