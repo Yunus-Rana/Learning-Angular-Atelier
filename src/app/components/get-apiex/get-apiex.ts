@@ -23,6 +23,8 @@ export class GetAPIex {
   }
 
   http = inject(HttpClient)
+
+
   getAllUsers(){
     this.usersLoading.set(true)
     this.usersError.set('')
@@ -31,6 +33,7 @@ export class GetAPIex {
         this.userList.set(res)
         this.usersLoading.set(false)
       },
+
       error:(err:any)=>{
         console.error("Error", err)
         this.usersError.set('Could not load users. Please try again later.')
@@ -38,6 +41,7 @@ export class GetAPIex {
       }
     })
   }
+
   getPhotos(){
     this.photosLoading.set(true)
     this.photosError.set('')
@@ -46,6 +50,7 @@ export class GetAPIex {
         this.userPhotos.set(res)
         this.photosLoading.set(false)
       },
+
       error:(err:any)=>{
         console.error("Error", err)
         this.photosError.set('Could not load photos. Please try again later.')
@@ -53,6 +58,7 @@ export class GetAPIex {
       }
     })
   }
+  
   getAllProducts(){
     this.productsLoading.set(true)
     this.productsError.set('')
