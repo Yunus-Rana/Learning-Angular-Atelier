@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 export class ClientCrud {
   http = inject(HttpClient);
   clientlist: WritableSignal<any[]> = signal([]);
+  
   newClientObj: any = {
     clientId: 0,
     clientName: '',
