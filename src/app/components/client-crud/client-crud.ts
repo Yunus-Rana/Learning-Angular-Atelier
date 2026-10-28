@@ -27,77 +27,128 @@ export class ClientCrud {
     logo: '',
   };
 
-  constructor(private mastersrv: Master){
-    const loggedusername = this.mastersrv.loggeduser
+  constructor(private mastersrv: Master) {
+    const loggedusername = this.mastersrv.loggeduser;
   }
 
   //read part -- starts
   ngOnInit() {
     this.getAllClients();
-    
   }
+
   getAllClients() {
-    this.http.get('https://api.freeprojectapi.com/api/SmartParking/GetAllClients').subscribe({
+    this.mastersrv.getClients().subscribe({
       next: (res: any) => {
         this.clientlist.set(res.data);
       },
     });
-  } //ends
+  }
+  // getAllClients() {
+  //   this.http.get('https://api.freeprojectapi.com/api/SmartParking/GetAllClients').subscribe({
+  //     next: (res: any) => {
+  //       this.clientlist.set(res.data);
+  //     },
+  //   });
+  // } //ends
 
   //create part -- starts
+  // onSaveClient() {
+  //   this.http.post('https://api.freeprojectapi.com/api/SmartParking/AddClient', this.newClientObj)
+  //     .subscribe({
+  //       next: (res: any) => {
+  //         if (res.result) {
+  //           alert('Client got added');
+  //           this.getAllClients();
+  //         } else {
+  //           alert(res.message);
+  //         }
+  //       },
+  //     });
+  // }
   onSaveClient() {
-    this.http.post('https://api.freeprojectapi.com/api/SmartParking/AddClient', this.newClientObj)
-      .subscribe({
-        next: (res: any) => {
-          if (res.result) {
-            alert('Client got added');
-            this.getAllClients();
-          } else {
-            alert(res.message);
-          }
-        },
-      });
+    this.mastersrv.saveClients(this.newClientObj).subscribe({
+      next: (res: any) => {
+        if (res.result) {
+          alert('Client got added');
+          this.getAllClients();
+        } else {
+          alert(res.message);
+        }
+      },
+    });
   } //ends
 
   //update part -- starts
   onEdit(data: any) {
     this.newClientObj = { ...data };
   }
+
   OnUpdateClient() {
-    this.http
-      .post('https://api.freeprojectapi.com/api/SmartParking/UpdateClient', this.newClientObj)
-      .subscribe({
+    this.mastersrv.updateClients(this.newClientObj).subscribe({
+      next: (res: any) => {
+        if (res.result) {
+          alert('Client got Updated');
+          this.getAllClients();
+        } else {
+          alert(res.message);
+        }
+      },
+      error: (err: any) => {
+        console.error('Client update failed', err);
+        alert(err.error?.message || 'Could not update the client. Please try again.');
+      },
+    });
+  } // --ends
+  // OnUpdateClient() {
+  //   this.http
+  //     .post('https://api.freeprojectapi.com/api/SmartParking/UpdateClient', this.newClientObj)
+  //     .subscribe({
+  //       next: (res: any) => {
+  //         if (res.result) {
+  //           alert('Client got Updated');
+  //           this.getAllClients();
+  //         } else {
+  //           alert(res.message);
+  //         }
+  //       },
+  //       error: (err: any) => {
+  //         console.error('Client update failed', err);
+  //         alert(err.error?.message || 'Could not update the client. Please try again.');
+  //       },
+  //     });
+  // } //ends
+
+  onDelete(clientId: number) {
+    const isconfirm = confirm('Are you sure you want to delete this client?');
+    if (isconfirm) {
+      this.mastersrv.deleteClients(clientId).subscribe({
         next: (res: any) => {
           if (res.result) {
-            alert('Client got Updated');
+            alert('Client deleted');
             this.getAllClients();
           } else {
             alert(res.message);
           }
         },
-        error: (err: any) => {
-          console.error('Client update failed', err);
-          alert(err.error?.message || 'Could not update the client. Please try again.');
-        },
       });
-  } //ends
-
-  //delete part -- starts
-  onDelete(clientId: number) {
-    const isconfirm = confirm('Are you sure you want to delete this client?');
-    if (isconfirm) {
-      this.http
-        .post('https://api.freeprojectapi.com/api/SmartParking/DeleteClient?id=' + clientId, {})
-        .subscribe({
-          next: (res: any) => {
-            if (res.result) {
-              alert('Client deleted');
-              this.getAllClients();
-            } else {
-              alert(res.message);
-            }
-          },
-        });
     }
-  }//ends
+  }
+  //delete part -- starts
+  // onDelete(clientId: number) {
+  //   const isconfirm = confirm('Are you sure you want to delete this client?');
+  //   if (isconfirm) {
+  //     this.http
+  //       .post('https://api.freeprojectapi.com/api/SmartParking/DeleteClient?id=' + clientId, {})
+  //       .subscribe({
+  //         next: (res: any) => {
+  //           if (res.result) {
+  //             alert('Client deleted');
+  //             this.getAllClients();
+  //           } else {
+  //             alert(res.message);
+  //           }
+  //         },
+  //       });
+  //   }
+  // }}//ends
 }
