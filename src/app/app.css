@@ -1,9 +1,13 @@
 .atelier-header {
-  position: relative;
-  z-index: 1;
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  left: 0;
   border-bottom: 1px solid rgb(231 234 230 / 85%);
-  background: rgb(255 255 255 / 90%);
-  box-shadow: 0 4px 24px rgb(31 48 58 / 3%);
+  background: rgb(255 255 255 / 70%);
+  box-shadow: 0 4px 24px rgb(31 48 58 / 6%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  backdrop-filter: blur(14px) saturate(150%);
 }
 
 .atelier-nav {

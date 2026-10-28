@@ -9,6 +9,7 @@ import { Signalbasics } from './components/signalbasics/signalbasics';
 import { SignalForms } from './components/signal-forms/signal-forms';
 import { GetAPIex } from './components/get-apiex/get-apiex';
 import { ClientCrud } from './components/client-crud/client-crud';
+import { Lifecycle } from './components/lifecycle/lifecycle';
 
 export const routes: Routes = [
     {
@@ -40,6 +41,9 @@ export const routes: Routes = [
     },
     {
         path: "clientcrud", component: ClientCrud
+    },
+    {
+        path: "lifecycle", component: Lifecycle
     },
     {
         path:"**", component: NotFound

@@ -1,0 +1,36 @@
+<main class="page-shell">
+  <header class="page-hero">
+    <p class="eyebrow">Practice module 10</p>
+    <h1 class="page-title">Component lifecycle</h1>
+    <p class="page-description">
+      Follow the main stages Angular components pass through, from creation to cleanup.
+    </p>
+  </header>
+
+  <section class="panel" aria-label="Component status">
+    <span class="section-label">This component</span>
+    <h2 class="section-heading">Lifecycle status</h2>
+    @if (isInitialized) {
+      <p class="inline-note">The component has been initialized with <strong>ngOnInit</strong>.</p>
+    } @else {
+      <p class="inline-note">Waiting for the component to initialize.</p>
+    }
+  </section>
+
+  @for (stage of lifecycleStages; track stage.name) {
+    <section class="panel section-spaced" [attr.aria-label]="stage.name + ' lifecycle hooks'">
+      <span class="section-label">Lifecycle stage</span>
+      <h2 class="section-heading">{{ stage.name }}</h2>
+      <p class="inline-note">{{ stage.description }}</p>
+
+      <div class="student-grid section-spaced">
+        @for (hook of stage.hooks; track hook.name) {
+          <article class="student-card">
+            <h3>{{ hook.name }}</h3>
+            <p>{{ hook.detail }}</p>
+          </article>
+        }
+      </div>
+    </section>
+  }
+</main>
