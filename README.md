@@ -17,16 +17,19 @@ This is a learning project, not a production client-management system. Some modu
 | Signal Forms | `/signalforms` | Signal-backed fields and schema-based validation. |
 | Get API | `/getapi` | Load and display user, photo, and product data from external APIs. |
 | Client CRUD | `/clientcrud` | Create, list, edit, and delete client records through an external API. |
+| Component Lifecycle | `/lifecycle` | Explore component initialization and Angular lifecycle hooks. |
 
 The navigation drawer groups modules by topic, highlights the current route, and can be closed using its close button, the backdrop, or Escape.
 
 ## Technology
 
-- Angular standalone components and Angular Router
+- Angular 22 standalone components and Angular Router
+- Angular Signals and the `@if` / `@for` template control-flow syntax
 - TypeScript
 - Angular Forms, including Reactive Forms and Signal Forms
 - Angular `HttpClient` for API examples
-- Bootstrap CSS and custom responsive styles
+- Bootstrap 5 and custom responsive styles
+- Vitest for unit tests
 
 ## Requirements
 
@@ -78,6 +81,7 @@ src/
 │   │   ├── databinding/
 │   │   ├── directive-exp/
 │   │   ├── get-apiex/
+│   │   ├── lifecycle/
 │   │   ├── not-found/
 │   │   ├── reactive-form-ex/
 │   │   ├── signal-forms/
